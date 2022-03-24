@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try try</title>
+</head>
+
+<body>
+    <h1></h1>
+    <button>切换用户</button>
+</body>
+<script>
+    let myButton = document.querySelector('button');
+    let myHeading = document.querySelector('h1');
+
+    function setName() {
+        let myName = prompt("请输入你的名字");
+        if (!myName || myName === null) {
+            setName();
+        } else {
+            localStorage.setItem("name", myName);
+            myHeading.textContent = 'Mozilla 酷毙了，' + myName;
+        }
+
+    }
+
+    if (!localStorage.getItem('name')) {
+        setName();
+    } else {
+        let storedName = localStorage.getItem('name');
+        myHeading.textContent = 'Mozilla 酷毙了，' + storedName;
+    }
+
+
+    myButton.onclick = function () {
+        setName();
+    }
+
+
+</script>
+
+</html>
